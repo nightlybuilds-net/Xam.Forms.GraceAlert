@@ -23,7 +23,7 @@ namespace Xam.Forms.GraceAlert
         public static readonly BindableProperty BodyContentProperty = BindableProperty.Create(nameof(BodyContent),
             typeof(ContentView), typeof(GraceAlertView), coerceValue: BodyContentCoerceValue);
 
-        public static readonly BindableProperty TimeProperty = BindableProperty.Create(nameof(Time),
+        public static readonly BindableProperty DismissTimeProperty = BindableProperty.Create(nameof(DismissTime),
             typeof(int), typeof(GraceAlertView),1000);
             
         public static readonly BindableProperty ErrorColorProperty = BindableProperty.Create(nameof(ErrorColor),
@@ -43,10 +43,10 @@ namespace Xam.Forms.GraceAlert
             set => this.SetValue(BodyContentProperty, value);
         }
         
-        public int Time
+        public int DismissTime
         {
-            get => (int) this.GetValue(TimeProperty);
-            set => this.SetValue(TimeProperty, value);
+            get => (int) this.GetValue(DismissTimeProperty);
+            set => this.SetValue(DismissTimeProperty, value);
         }
         
         public Color ErrorColor
@@ -123,7 +123,7 @@ namespace Xam.Forms.GraceAlert
             this.Message.Text = request.Message;
 
             await this.Notification.TranslateTo(this.Notification.X, 0);
-            await Task.Delay(this.Time);
+            await Task.Delay(this.DismissTime);
             await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height);
 
             this._isShowing = false;
