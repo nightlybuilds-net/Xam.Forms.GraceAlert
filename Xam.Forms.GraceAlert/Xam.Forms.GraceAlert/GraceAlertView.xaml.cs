@@ -130,7 +130,6 @@ namespace Xam.Forms.GraceAlert
             await this.InnerShow();
         }
 
-
         private Color TypeToColor(NotificationType type)
         {
             switch (type)
@@ -145,32 +144,6 @@ namespace Xam.Forms.GraceAlert
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
-
-        enum NotificationType
-        {
-            Error,
-            Warning,
-            Info
-        }
-        
-        class GraceRequest
-        {
-            public GraceRequest(NotificationType type, string title, string message)
-            {
-                this.Type = type;
-                this.Title = title;
-                this.Message = message;
-            }
-
-            public NotificationType Type { get; }
-            public string Title { get; }
-            public string Message { get; }
-        }
-
         #endregion
-        
-       
     }
-
-  
 }
