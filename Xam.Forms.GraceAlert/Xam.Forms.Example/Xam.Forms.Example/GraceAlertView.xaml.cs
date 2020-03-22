@@ -1,5 +1,6 @@
 using System;
-using System.Runtime.CompilerServices;
+using System.Collections.Concurrent;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -8,7 +9,9 @@ namespace Xam.Forms.Example
 {
     public partial class GraceAlertView : Grid
     {
-        
+        private bool _isShowing;
+        private readonly ConcurrentQueue<GraceRequest> _requests = new ConcurrentQueue<GraceRequest>();
+
         public GraceAlertView()
         {
             InitializeComponent();
@@ -29,7 +32,8 @@ namespace Xam.Forms.Example
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(nameof(InfoColor),
             typeof(Color), typeof(GraceAlertView),Color.LightGray);
 
-        
+
+
         public ContentView BodyContent
         {
             get => (ContentView) this.GetValue(BodyContentProperty);
@@ -90,14 +94,39 @@ namespace Xam.Forms.Example
         
         private async Task Show(NotificationType type, string title, string message)
         {
-            this.Notification.BackgroundColor = this.TypeToColor(type);
-            this.Title.Text = title;
-            this.Message.Text = message;
+            var request = new GraceRequest(type,title,message);
+            this._requests.Enqueue(request);
             
+            await this.InnerShow();
+        }
+
+        private async Task InnerShow()
+        {
+            // notificatioin is showing skip
+            if (this._isShowing)
+                return;
+
+            // no request in queue skip
+            if (!this._requests.Any()) return;
+
+            // notification is showing
+            this._isShowing = true;
+
+            var requestFound = this._requests.TryDequeue(out var request);
+            if (!requestFound) return;
+
+            this.Notification.BackgroundColor = this.TypeToColor(request.Type);
+            this.Title.Text = request.Title;
+            this.Message.Text = request.Message;
+
             await this.Notification.TranslateTo(this.Notification.X, 0);
             await Task.Delay(this.Time);
             await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height);
+
+            this._isShowing = false;
+            await this.InnerShow();
         }
+
 
         private Color TypeToColor(NotificationType type)
         {
@@ -121,9 +150,24 @@ namespace Xam.Forms.Example
             Info
         }
         
+        class GraceRequest
+        {
+            public GraceRequest(NotificationType type, string title, string message)
+            {
+                this.Type = type;
+                this.Title = title;
+                this.Message = message;
+            }
+
+            public NotificationType Type { get; }
+            public string Title { get; }
+            public string Message { get; }
+        }
 
         #endregion
         
        
     }
+
+  
 }
