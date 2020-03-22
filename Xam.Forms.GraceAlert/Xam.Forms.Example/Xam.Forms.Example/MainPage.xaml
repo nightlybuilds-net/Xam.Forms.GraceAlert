@@ -9,8 +9,8 @@
             <ContentView>
                 <StackLayout VerticalOptions="Center">
                     <Button Text="Error" Clicked="Button_OnClicked"/>
-                    <Button Text="Info"/>
-                    <Button Text="Warning"/>
+                    <Button Text="Warning" Clicked="Warning_OnClicked"/>
+                    <Button Text="Info" Clicked="Info_OnClicked"/>
                 </StackLayout>
             </ContentView>
           

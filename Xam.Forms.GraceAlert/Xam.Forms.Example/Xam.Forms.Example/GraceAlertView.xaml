@@ -1,19 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Grid xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Xam.Forms.Example.GraceAlertView"
-             >
-        <Grid>
-            <ContentView 
-                        x:Name="Alert"
-                        VerticalOptions="Start"
-                        HeightRequest="140"
-                        TranslationY="-140"
-                        BackgroundColor="Red">
-                        <Label Text="Ciaone" VerticalOptions="Center"/>
-                    </ContentView>
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Xam.Forms.Example.GraceAlertView">
+    <Grid>
+        <ContentView
+            x:Name="Notification"
+            VerticalOptions="Start"
+            HeightRequest="140"
+            TranslationY="-140"
+            BackgroundColor="Red">
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <StackLayout Grid.Column="1" 
+                             VerticalOptions="End"
+                             Margin="0,0,0,16">
+                    <Label 
+                        x:Name="Title"
+                        FontAttributes="Bold"
+                        Text="Title" 
+                        FontSize="Large"
+                        />
+                    <Label 
+                        x:Name="Message"
+                        Text="Message oiwenfonwefnweon fioenwoi fnow nfoinewof newonfoweinfoewnifoewin" 
+                        FontSize="Medium"
+                    />
 
-            <ContentView x:Name="Body"/>
-        </Grid>
+
+                </StackLayout>
+               
+            </Grid>
+            
+        </ContentView>
+
+        <ContentView x:Name="Body" />
+    </Grid>
 </Grid>
