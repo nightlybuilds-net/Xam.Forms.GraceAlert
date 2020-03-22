@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xam.Forms.Example"
+             xmlns:example="clr-namespace:Xam.Forms.Example;assembly=Xam.Forms.GraceAlert"
              x:Class="Xam.Forms.Example.MainPage">
     
-    <local:GraceAlertView x:Name="GraceAlertView" >
-        <local:GraceAlertView.BodyContent>
+    <example:GraceAlertView x:Name="GraceAlertView" >
+        <example:GraceAlertView.BodyContent>
             <ContentView>
                 <StackLayout VerticalOptions="Center">
                     <Button Text="Error" Clicked="Button_OnClicked"/>
@@ -14,8 +15,8 @@
                 </StackLayout>
             </ContentView>
           
-        </local:GraceAlertView.BodyContent>
-    </local:GraceAlertView>
+        </example:GraceAlertView.BodyContent>
+    </example:GraceAlertView>
     
    
    

@@ -13,4 +13,8 @@
         <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
         <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Xam.Forms.GraceAlert\Xam.Forms.GraceAlert.csproj" />
+    </ItemGroup>
 </Project>
