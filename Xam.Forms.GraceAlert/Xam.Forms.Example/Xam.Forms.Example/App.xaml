@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:example="clr-namespace:Xam.Forms.Example;assembly=Xam.Forms.GraceAlert"
+             xmlns:graceAlert="clr-namespace:Xam.Forms.GraceAlert;assembly=Xam.Forms.GraceAlert"
              x:Class="Xam.Forms.Example.App">
     <Application.Resources>
-
         <ResourceDictionary>
-            <Style TargetType="example:GraceAlertView">
-                <Setter Property="Time" Value="5000"/>
-                <Setter Property="ErrorColor" Value="Magenta"/>
+            <Style TargetType="graceAlert:GraceAlertView">
+                <Setter Property="Time" Value="1500"/>
+                <!-- <Setter Property="ErrorColor" Value="Magenta"/> -->
             </Style>
         </ResourceDictionary>
     </Application.Resources>

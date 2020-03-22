@@ -2,6 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Title>Xam.Forms.GraceAlert</Title>
+        <Authors>Marco Milani</Authors>
+        <Description>Grace Alert View for Xamarin Forms</Description>
+        <PackageProjectUrl>https://github.com/markjackmilian/Xam.Forms.GraceAlert</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/markjackmilian/Xam.Forms.GraceAlert</RepositoryUrl>
+        <PackageTags>xamarin forms, notification, alert</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

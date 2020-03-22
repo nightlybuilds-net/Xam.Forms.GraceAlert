@@ -2,19 +2,22 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
-namespace Xam.Forms.Example
+namespace Xam.Forms.GraceAlert
 {
     public partial class GraceAlertView : Grid
     {
         private bool _isShowing;
         private readonly ConcurrentQueue<GraceRequest> _requests = new ConcurrentQueue<GraceRequest>();
 
+        private static readonly Color DefaultWarningColor = Color.FromHex("F6CF46");
+        private static readonly Color DefaultErrorColor = Color.FromHex("E5465C");
+        
+
         public GraceAlertView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
         
         public static readonly BindableProperty BodyContentProperty = BindableProperty.Create(nameof(BodyContent),
@@ -24,10 +27,10 @@ namespace Xam.Forms.Example
             typeof(int), typeof(GraceAlertView),1000);
             
         public static readonly BindableProperty ErrorColorProperty = BindableProperty.Create(nameof(ErrorColor),
-            typeof(Color), typeof(GraceAlertView),Color.Red);
+            typeof(Color), typeof(GraceAlertView),DefaultErrorColor);
         
         public static readonly BindableProperty WarningColorProperty = BindableProperty.Create(nameof(WarningColor),
-            typeof(Color), typeof(GraceAlertView),Color.Yellow);
+            typeof(Color), typeof(GraceAlertView),DefaultWarningColor);
         
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(nameof(InfoColor),
             typeof(Color), typeof(GraceAlertView),Color.LightGray);
