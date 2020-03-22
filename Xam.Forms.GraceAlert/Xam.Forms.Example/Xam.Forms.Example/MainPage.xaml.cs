@@ -13,5 +13,10 @@ namespace Xam.Forms.Example
         {
             InitializeComponent();
         }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            await this.GraceAlertView.Show();
+        }
     }
 }

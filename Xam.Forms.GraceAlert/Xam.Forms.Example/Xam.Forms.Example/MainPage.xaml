@@ -3,12 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Xam.Forms.Example"
              x:Class="Xam.Forms.Example.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+    
+    <local:GraceAlertView x:Name="GraceAlertView">
+        <local:GraceAlertView.BodyContent>
+            <ContentView>
+                <StackLayout VerticalOptions="Center">
+                    <Button Text="Error" Clicked="Button_OnClicked"/>
+                    <Button Text="Info"/>
+                    <Button Text="Warning"/>
+                </StackLayout>
+            </ContentView>
+          
+        </local:GraceAlertView.BodyContent>
+    </local:GraceAlertView>
+    
+   
+   
 </ContentPage>

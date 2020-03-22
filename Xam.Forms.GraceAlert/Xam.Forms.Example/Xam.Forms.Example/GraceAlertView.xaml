@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xam.Forms.Example.GraceAlertView"
+             >
+        <Grid>
+            <ContentView 
+                        x:Name="Alert"
+                        VerticalOptions="Start"
+                        HeightRequest="140"
+                        TranslationY="-140"
+                        BackgroundColor="Red">
+                        <Label Text="Ciaone" VerticalOptions="Center"/>
+                    </ContentView>
+
+            <ContentView x:Name="Body"/>
+        </Grid>
+</Grid>
