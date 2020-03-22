@@ -8,6 +8,7 @@ namespace Xam.Forms.Example
 {
     public partial class GraceAlertView : Grid
     {
+        
         public GraceAlertView()
         {
             InitializeComponent();
@@ -16,11 +17,47 @@ namespace Xam.Forms.Example
         public static readonly BindableProperty BodyContentProperty = BindableProperty.Create(nameof(BodyContent),
             typeof(ContentView), typeof(GraceAlertView), coerceValue: BodyContentCoerceValue);
 
+        public static readonly BindableProperty TimeProperty = BindableProperty.Create(nameof(Time),
+            typeof(int), typeof(GraceAlertView),1000);
+            
+        public static readonly BindableProperty ErrorColorProperty = BindableProperty.Create(nameof(ErrorColor),
+            typeof(Color), typeof(GraceAlertView),Color.Red);
+        
+        public static readonly BindableProperty WarningColorProperty = BindableProperty.Create(nameof(WarningColor),
+            typeof(Color), typeof(GraceAlertView),Color.Yellow);
+        
+        public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(nameof(InfoColor),
+            typeof(Color), typeof(GraceAlertView),Color.LightGray);
+
         
         public ContentView BodyContent
         {
             get => (ContentView) this.GetValue(BodyContentProperty);
             set => this.SetValue(BodyContentProperty, value);
+        }
+        
+        public int Time
+        {
+            get => (int) this.GetValue(TimeProperty);
+            set => this.SetValue(TimeProperty, value);
+        }
+        
+        public Color ErrorColor
+        {
+            get => (Color) this.GetValue(ErrorColorProperty);
+            set => this.SetValue(ErrorColorProperty, value);
+        }
+        
+        public Color WarningColor
+        {
+            get => (Color) this.GetValue(WarningColorProperty);
+            set => this.SetValue(WarningColorProperty, value);
+        }
+        
+        public Color InfoColor
+        {
+            get => (Color) this.GetValue(InfoColorProperty);
+            set => this.SetValue(InfoColorProperty, value);
         }
         
         private static object BodyContentCoerceValue(BindableObject bindableObject, object value)
@@ -34,6 +71,8 @@ namespace Xam.Forms.Example
             return value;
         }
 
+
+        #region METHODS
         public Task Error(string title, string text)
         {
             return this.Show(NotificationType.Error, title, text);
@@ -56,7 +95,7 @@ namespace Xam.Forms.Example
             this.Message.Text = message;
             
             await this.Notification.TranslateTo(this.Notification.X, 0);
-            await Task.Delay(1000);
+            await Task.Delay(this.Time);
             await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height);
         }
 
@@ -65,11 +104,11 @@ namespace Xam.Forms.Example
             switch (type)
             {
                 case NotificationType.Error:
-                    return Color.Red;
+                    return this.ErrorColor;
                 case NotificationType.Warning:
-                    return Color.Yellow;
+                    return this.WarningColor;
                 case NotificationType.Info:
-                    return Color.Beige;
+                    return this.InfoColor;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -81,5 +120,10 @@ namespace Xam.Forms.Example
             Warning,
             Info
         }
+        
+
+        #endregion
+        
+       
     }
 }

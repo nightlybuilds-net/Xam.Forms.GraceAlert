@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Xam.Forms.Example"
              x:Class="Xam.Forms.Example.MainPage">
     
-    <local:GraceAlertView x:Name="GraceAlertView">
+    <local:GraceAlertView x:Name="GraceAlertView" >
         <local:GraceAlertView.BodyContent>
             <ContentView>
                 <StackLayout VerticalOptions="Center">
