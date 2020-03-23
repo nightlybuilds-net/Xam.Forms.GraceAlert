@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Xam.Forms.GraceAlert
@@ -10,7 +11,7 @@ namespace Xam.Forms.GraceAlert
         /// </summary>
         /// <param name="page"></param>
         /// <returns></returns>
-        public static GraceAlertView FindGraceAlertView(this Page page)
+        public static GraceAlertView GraceAlert(this Page page)
         {
             return page.LogicalChildren.OfType<GraceAlertView>().FirstOrDefault();
         }

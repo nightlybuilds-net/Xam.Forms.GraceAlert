@@ -15,7 +15,7 @@ namespace Xam.Forms.Example
         public MainPage()
         {
             InitializeComponent();
-            this._graceAlertView = this.FindGraceAlertView();
+            this._graceAlertView = this.GraceAlert();
         }
 
         private async void Error_OnClicked(object sender, EventArgs e)
