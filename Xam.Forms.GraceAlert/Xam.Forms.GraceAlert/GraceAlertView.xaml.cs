@@ -13,6 +13,7 @@ namespace Xam.Forms.GraceAlert
 
         private static readonly Color DefaultWarningColor = Color.FromHex("F6CF46");
         private static readonly Color DefaultErrorColor = Color.FromHex("E5465C");
+        private static readonly Color DefaultInfoColor = Color.LightGray;
         
 
         public GraceAlertView()
@@ -25,7 +26,7 @@ namespace Xam.Forms.GraceAlert
 
         public static readonly BindableProperty DismissTimeProperty = BindableProperty.Create(nameof(DismissTime),
             typeof(int), typeof(GraceAlertView),1000);
-            
+        
         public static readonly BindableProperty ErrorColorProperty = BindableProperty.Create(nameof(ErrorColor),
             typeof(Color), typeof(GraceAlertView),DefaultErrorColor);
         
@@ -33,7 +34,7 @@ namespace Xam.Forms.GraceAlert
             typeof(Color), typeof(GraceAlertView),DefaultWarningColor);
         
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(nameof(InfoColor),
-            typeof(Color), typeof(GraceAlertView),Color.LightGray);
+            typeof(Color), typeof(GraceAlertView),DefaultInfoColor);
 
 
 
