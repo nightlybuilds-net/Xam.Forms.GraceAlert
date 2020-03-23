@@ -10,27 +10,24 @@ namespace Xam.Forms.Example
 {
     public partial class MainPage : ContentPage
     {
-        private readonly GraceAlertView _graceAlertView;
-
         public MainPage()
         {
             InitializeComponent();
-            this._graceAlertView = this.GraceAlert();
         }
 
         private async void Error_OnClicked(object sender, EventArgs e)
         {
-            await this._graceAlertView.Error("Errore","Non va bene cosi!");
+            await this.Error("Errore","Non va bene cosi!");
         }
         
         private async void Warning_OnClicked(object sender, EventArgs e)
         {
-            await this._graceAlertView.Warning("Attenzione","Aggiungi il dato che ben sai!");
+            await this.Warning("Attenzione","Aggiungi il dato che ben sai!");
         }
 
         private async void Info_OnClicked(object sender, EventArgs e)
         {
-            await this._graceAlertView.Info("Info","Info carina ma non obbligatoria");
+            await this.Info("Info","Info carina ma non obbligatoria");
         }
        
     }

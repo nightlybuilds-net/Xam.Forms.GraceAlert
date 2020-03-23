@@ -1,6 +1,6 @@
 namespace Xam.Forms.GraceAlert
 {
-    enum NotificationType
+    public enum NotificationType
     {
         Error,
         Warning,

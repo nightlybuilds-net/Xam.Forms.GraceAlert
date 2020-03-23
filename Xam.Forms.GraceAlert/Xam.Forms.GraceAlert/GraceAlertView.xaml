@@ -5,8 +5,8 @@
     <ContentView
         x:Name="Notification"
         VerticalOptions="Start"
-        HeightRequest="125"
-        TranslationY="-125">
+        HeightRequest="80"
+        TranslationY="-80">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="24" />

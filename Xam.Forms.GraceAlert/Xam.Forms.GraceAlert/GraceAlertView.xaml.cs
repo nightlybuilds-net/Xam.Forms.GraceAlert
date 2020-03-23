@@ -3,11 +3,14 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace Xam.Forms.GraceAlert
 {
     public partial class GraceAlertView : Grid
     {
+        private int _defaultHeight = 80;
+        
         private bool _isShowing;
         private readonly ConcurrentQueue<GraceRequest> _requests = new ConcurrentQueue<GraceRequest>();
 
@@ -25,7 +28,7 @@ namespace Xam.Forms.GraceAlert
             typeof(ContentView), typeof(GraceAlertView), coerceValue: BodyContentCoerceValue);
 
         public static readonly BindableProperty DismissTimeProperty = BindableProperty.Create(nameof(DismissTime),
-            typeof(int), typeof(GraceAlertView),1000);
+            typeof(int), typeof(GraceAlertView),2000);
         
         public static readonly BindableProperty ErrorColorProperty = BindableProperty.Create(nameof(ErrorColor),
             typeof(Color), typeof(GraceAlertView),DefaultErrorColor);
@@ -67,7 +70,13 @@ namespace Xam.Forms.GraceAlert
             get => (Color) this.GetValue(InfoColorProperty);
             set => this.SetValue(InfoColorProperty, value);
         }
-        
+
+        /// <summary>
+        /// This property is setted by extension method GraceAlert()
+        /// If on iOS with safearea off on device 10.3 or 11
+        /// </summary>
+        public int SafeAreaInsets { get; set; }
+
         private static object BodyContentCoerceValue(BindableObject bindableObject, object value)
         {
             if (bindableObject != null && value is ContentView view)
@@ -81,22 +90,8 @@ namespace Xam.Forms.GraceAlert
 
 
         #region METHODS
-        public Task Error(string title, string text)
-        {
-            return this.Show(NotificationType.Error, title, text);
-        }
         
-        public Task Warning(string title, string text)
-        {
-            return this.Show(NotificationType.Warning, title, text);
-        }
-        
-        public Task Info(string title, string text)
-        {
-            return this.Show(NotificationType.Info, title, text);
-        }
-        
-        private async Task Show(NotificationType type, string title, string message)
+        public async Task Show(NotificationType type, string title, string message)
         {
             var request = new GraceRequest(type,title,message);
             this._requests.Enqueue(request);
@@ -119,6 +114,13 @@ namespace Xam.Forms.GraceAlert
             var requestFound = this._requests.TryDequeue(out var request);
             if (!requestFound) return;
 
+            var height = this.SafeAreaInsets == 0 ? this._defaultHeight : this._defaultHeight + this.SafeAreaInsets;
+            var translation = height * -1;
+
+            // fix height for safeare ios
+            this.Notification.TranslationY = translation;
+            this.Notification.HeightRequest = height;
+            
             this.Notification.BackgroundColor = this.TypeToColor(request.Type);
             this.Title.Text = request.Title;
             this.Message.Text = request.Message;
@@ -145,6 +147,7 @@ namespace Xam.Forms.GraceAlert
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
+        
         #endregion
     }
 }
