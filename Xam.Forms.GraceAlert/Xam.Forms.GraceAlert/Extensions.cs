@@ -1,6 +1,4 @@
-using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -96,7 +94,6 @@ namespace Xam.Forms.GraceAlert
             await graceAlert.Show(NotificationType.Info, title, text);
         }
 
-
         /// <summary>
         /// Adjust insets for ios 
         /// </summary>
@@ -106,14 +103,9 @@ namespace Xam.Forms.GraceAlert
         {
             if (Device.RuntimePlatform != Device.iOS) return;
 
-            graceView.PageUseSafeArea = false;
             graceView.IsPotrait = page.IsPotrait();
-
-            // if safe area is turn on there is no need to add insets
-            graceView.PageUseSafeArea = Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.UsingSafeArea(page.On<iOS>());
+            graceView.PageUseSafeArea =
+                Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.UsingSafeArea(page.On<iOS>());
         }
-
-
-       
     }
 }
