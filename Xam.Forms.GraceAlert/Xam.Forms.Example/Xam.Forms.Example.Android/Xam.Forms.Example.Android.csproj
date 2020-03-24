@@ -14,7 +14,6 @@
         <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
         <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-        <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
         <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
         <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     </PropertyGroup>
@@ -72,7 +71,7 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Xam.Forms.Example\Xam.Forms.Example.csproj">
-            <Project>{22EC8905-74EE-49E7-9002-A2F8A9C80C13}</Project>
+            <Project>{F5F26180-0866-434B-AC7A-039AB8104167}</Project>
             <Name>Xam.Forms.Example</Name>
         </ProjectReference>
     </ItemGroup>

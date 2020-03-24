@@ -9,7 +9,10 @@ namespace Xam.Forms.GraceAlert
 {
     public partial class GraceAlertView : Grid
     {
-        private int _defaultHeight = 80;
+        /// <summary>
+        /// 
+        /// </summary>
+        private int _defaultTranslation = -44;
         
         private bool _isShowing;
         private readonly ConcurrentQueue<GraceRequest> _requests = new ConcurrentQueue<GraceRequest>();
@@ -73,9 +76,13 @@ namespace Xam.Forms.GraceAlert
 
         /// <summary>
         /// This property is setted by extension method GraceAlert()
-        /// If on iOS with safearea off on device 10.3 or 11
         /// </summary>
-        public int SafeAreaInsets { get; set; }
+        public bool PageUseSafeArea { get; set; }
+
+        /// <summary>
+        /// True iif the page is in potrait mode
+        /// </summary>
+        public bool IsPotrait { get; set; }
 
         private static object BodyContentCoerceValue(BindableObject bindableObject, object value)
         {
@@ -113,21 +120,19 @@ namespace Xam.Forms.GraceAlert
 
             var requestFound = this._requests.TryDequeue(out var request);
             if (!requestFound) return;
-
-            var height = this.SafeAreaInsets == 0 ? this._defaultHeight : this._defaultHeight + this.SafeAreaInsets;
-            var translation = height * -1;
-
-            // fix height for safeare ios
-            this.Notification.TranslationY = translation;
-            this.Notification.HeightRequest = height;
             
+            // manage translation
+            var translation = _defaultTranslation;
+            if (!this.PageUseSafeArea && this.IsPotrait)
+                translation = 0;
+
             this.Notification.BackgroundColor = this.TypeToColor(request.Type);
             this.Title.Text = request.Title;
             this.Message.Text = request.Message;
 
-            await this.Notification.TranslateTo(this.Notification.X, 0);
+            await this.Notification.TranslateTo(this.Notification.X, translation);
             await Task.Delay(this.DismissTime);
-            await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height);
+            await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height + translation);
 
             this._isShowing = false;
             await this.InnerShow();

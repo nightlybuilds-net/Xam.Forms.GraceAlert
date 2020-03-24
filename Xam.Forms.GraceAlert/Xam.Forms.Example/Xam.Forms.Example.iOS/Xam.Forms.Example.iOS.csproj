@@ -25,6 +25,8 @@
         <MtouchArch>x86_64</MtouchArch>
         <MtouchLink>None</MtouchLink>
         <MtouchDebug>true</MtouchDebug>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
+        <CodesignKey>iPhone Developer: Marco Milani (7UUD36ZQVG)</CodesignKey>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>none</DebugType>
@@ -35,6 +37,8 @@
         <MtouchLink>None</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
         <ConsolePause>false</ConsolePause>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
+        <CodesignKey>iPhone Developer: Marco Milani (7UUD36ZQVG)</CodesignKey>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
@@ -46,9 +50,10 @@
         <WarningLevel>4</WarningLevel>
         <ConsolePause>false</ConsolePause>
         <MtouchArch>ARM64</MtouchArch>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Developer: Marco Milani (7UUD36ZQVG)</CodesignKey>
         <MtouchDebug>true</MtouchDebug>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>none</DebugType>
@@ -58,8 +63,9 @@
         <WarningLevel>4</WarningLevel>
         <MtouchArch>ARM64</MtouchArch>
         <ConsolePause>false</ConsolePause>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Developer: Marco Milani (7UUD36ZQVG)</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
         <DebugType>none</DebugType>
@@ -70,8 +76,8 @@
         <ConsolePause>False</ConsolePause>
         <MtouchArch>ARM64</MtouchArch>
         <BuildIpa>True</BuildIpa>
-        <CodesignProvision>Automatic:AdHoc</CodesignProvision>
-        <CodesignKey>iPhone Distribution</CodesignKey>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
+        <CodesignKey>iPhone Developer: Marco Milani (7UUD36ZQVG)</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -82,8 +88,8 @@
         <WarningLevel>4</WarningLevel>
         <ConsolePause>False</ConsolePause>
         <MtouchArch>ARM64</MtouchArch>
-        <CodesignProvision>Automatic:AppStore</CodesignProvision>
-        <CodesignKey>iPhone Distribution</CodesignKey>
+        <CodesignProvision>VS: WildCard Development</CodesignProvision>
+        <CodesignKey>iPhone Developer: Marco Milani (7UUD36ZQVG)</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     </PropertyGroup>
     <ItemGroup>
@@ -110,8 +116,16 @@
         <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\..\Xam.Forms.GraceAlert.iOS\Xam.Forms.GraceAlert.iOS.csproj">
+          <Project>{a4581797-f687-481d-b94e-331f622f26d4}</Project>
+          <Name>Xam.Forms.GraceAlert.iOS</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Xam.Forms.GraceAlert\Xam.Forms.GraceAlert.csproj">
+          <Project>{b60d9d3d-3346-4b58-b2b8-20a34e0c2112}</Project>
+          <Name>Xam.Forms.GraceAlert</Name>
+        </ProjectReference>
         <ProjectReference Include="..\Xam.Forms.Example\Xam.Forms.Example.csproj">
-            <Project>{22EC8905-74EE-49E7-9002-A2F8A9C80C13}</Project>
+            <Project>{F5F26180-0866-434B-AC7A-039AB8104167}</Project>
             <Name>Xam.Forms.Example</Name>
         </ProjectReference>
     </ItemGroup>

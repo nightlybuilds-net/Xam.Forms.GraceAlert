@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Xam.Forms.GraceAlert
                 Debug.WriteLine("GraceAlertView not found on page");
                 return null;
             }
-            
+
             // add pixel for not safe area on ios
             AdjustForIos(view, page);
             return view;
@@ -54,7 +55,7 @@ namespace Xam.Forms.GraceAlert
                 return;
             }
 
-            await graceAlert.Show(NotificationType.Error,title, text);
+            await graceAlert.Show(NotificationType.Error, title, text);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Xam.Forms.GraceAlert
                 return;
             }
 
-            await graceAlert.Show(NotificationType.Warning,title, text);
+            await graceAlert.Show(NotificationType.Warning, title, text);
         }
 
         /// <summary>
@@ -92,10 +93,10 @@ namespace Xam.Forms.GraceAlert
                 return;
             }
 
-            await graceAlert.Show(NotificationType.Info,title, text);
+            await graceAlert.Show(NotificationType.Info, title, text);
         }
-        
-        
+
+
         /// <summary>
         /// Adjust insets for ios 
         /// </summary>
@@ -104,13 +105,15 @@ namespace Xam.Forms.GraceAlert
         private static void AdjustForIos(GraceAlertView graceView, Page page)
         {
             if (Device.RuntimePlatform != Device.iOS) return;
-            
-            graceView.SafeAreaInsets = 0;
+
+            graceView.PageUseSafeArea = false;
+            graceView.IsPotrait = page.IsPotrait();
 
             // if safe area is turn on there is no need to add insets
-            var useSafeArea = Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.UsingSafeArea(page.On<iOS>());
-            if (!useSafeArea && page.IsPotrait())
-                graceView.SafeAreaInsets = 44;
+            graceView.PageUseSafeArea = Xamarin.Forms.PlatformConfiguration.iOSSpecific.Page.UsingSafeArea(page.On<iOS>());
         }
+
+
+       
     }
 }
