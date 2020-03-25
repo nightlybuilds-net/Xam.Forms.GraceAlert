@@ -112,14 +112,11 @@
         <Reference Include="Xamarin.iOS" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
+        <PackageReference Include="Xamarin.Forms" Version="4.0.0.709238" />
         <PackageReference Include="Xamarin.HotReload" Version="1.6.1" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\Xam.Forms.GraceAlert.iOS\Xam.Forms.GraceAlert.iOS.csproj">
-          <Project>{a4581797-f687-481d-b94e-331f622f26d4}</Project>
-          <Name>Xam.Forms.GraceAlert.iOS</Name>
-        </ProjectReference>
+       
         <ProjectReference Include="..\..\Xam.Forms.GraceAlert\Xam.Forms.GraceAlert.csproj">
           <Project>{b60d9d3d-3346-4b58-b2b8-20a34e0c2112}</Project>
           <Name>Xam.Forms.GraceAlert</Name>
