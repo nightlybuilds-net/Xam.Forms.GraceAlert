@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Xam.Forms.GraceAlert</id>
+    <version>0.1.1-alpha1</version>
+    <title>Xam GraceAlert</title>
+    <authors>Marco Milani</authors>
+    <owners>Marco Milani</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/markjackmilian/Xam.Forms.GraceAlert</projectUrl>
+    <description>Simple and beautiful notification hub for Xamarin Forms.</description>
+    <releaseNotes></releaseNotes>
+    <tags>xamarin, gracealert, grace alert,notification, xamarin forms</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Xamarin.Forms" version="4.0.0.709238" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Xam.Forms.GraceAlert\bin\Release\netstandard2.0\Xam.Forms.GraceAlert.dll" target="lib\netstandard2.0\Xam.Forms.GraceAlert.dll" />
+  </files>
+</package>

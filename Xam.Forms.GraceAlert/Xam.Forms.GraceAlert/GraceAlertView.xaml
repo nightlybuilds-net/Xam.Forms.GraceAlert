@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Xam.Forms.GraceAlert.GraceAlertView">
+    <ContentView
+        x:Name="Notification"
+        VerticalOptions="Start"
+        HeightRequest="125"
+        TranslationY="-125">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="24" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="1"
+                         VerticalOptions="End"
+                         Margin="0,0,0,16">
+                <Label
+                    x:Name="Title"
+                    TextColor="#323232"
+                    FontAttributes="Bold"
+                    FontSize="Large" />
+                <Label
+                    x:Name="Message"
+                    TextColor="#323232"
+                    FontSize="Medium" />
+            </StackLayout>
+        </Grid>
+    </ContentView>
+    <ContentView x:Name="Body" />
+</Grid>

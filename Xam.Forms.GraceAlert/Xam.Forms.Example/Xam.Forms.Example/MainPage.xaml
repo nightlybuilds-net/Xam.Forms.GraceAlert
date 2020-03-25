@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:graceAlert="clr-namespace:Xam.Forms.GraceAlert;assembly=Xam.Forms.GraceAlert"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOsSpecific:Page.UseSafeArea="true"
+             x:Class="Xam.Forms.Example.MainPage">
+    <graceAlert:GraceAlertView>
+        <graceAlert:GraceAlertView.BodyContent>
+            <ContentView>
+                <StackLayout VerticalOptions="Center">
+                    <Button Text="Error" Clicked="Error_OnClicked"/>
+                    <Button Text="Warning" Clicked="Warning_OnClicked"/>
+                    <Button Text="Info" Clicked="Info_OnClicked"/>
+                </StackLayout>
+            </ContentView>
+        </graceAlert:GraceAlertView.BodyContent>
+    </graceAlert:GraceAlertView>
+</ContentPage>
