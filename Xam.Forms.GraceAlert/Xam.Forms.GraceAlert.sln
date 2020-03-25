@@ -10,6 +10,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xam.Forms.Example.iOS", "Xa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{00AF9E5B-C7F3-403A-AFD1-EEB1EA2ADB89}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuspec", "Nuspec", "{D2313D83-C64A-46C2-9CDD-E00A0FAAC975}"
+ProjectSection(SolutionItems) = preProject
+	Nuspecs\Xam.Forms.GraceAlert.nuspec = Nuspecs\Xam.Forms.GraceAlert.nuspec
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
