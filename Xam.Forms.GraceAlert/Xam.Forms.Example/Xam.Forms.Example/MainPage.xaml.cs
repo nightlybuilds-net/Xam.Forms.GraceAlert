@@ -14,6 +14,11 @@ namespace Xam.Forms.Example
         {
             InitializeComponent();
         }
+        
+        private async void Block_Error_OnClicked(object sender, EventArgs e)
+        {
+            await this.Error("Errore","Non va bene cosi! BLOCK", true);
+        }
 
         private async void Error_OnClicked(object sender, EventArgs e)
         {

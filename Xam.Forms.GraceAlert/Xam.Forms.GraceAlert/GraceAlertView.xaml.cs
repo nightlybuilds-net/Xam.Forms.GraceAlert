@@ -9,9 +9,7 @@ namespace Xam.Forms.GraceAlert
 {
     public partial class GraceAlertView : Grid
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        private TaskCompletionSource<bool> _dismissTask;
         private int _defaultTranslation = -44;
         
         private bool _isShowing;
@@ -20,6 +18,9 @@ namespace Xam.Forms.GraceAlert
         private static readonly Color DefaultWarningColor = Color.FromHex("F6CF46");
         private static readonly Color DefaultErrorColor = Color.FromHex("E5465C");
         private static readonly Color DefaultInfoColor = Color.LightGray;
+        
+        private static readonly Color DefaultTitleColor = Color.FromHex("323232");
+        private static readonly Color DefaultMessageColor = Color.FromHex("323232");
         
 
         public GraceAlertView()
@@ -41,8 +42,13 @@ namespace Xam.Forms.GraceAlert
         
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(nameof(InfoColor),
             typeof(Color), typeof(GraceAlertView),DefaultInfoColor);
-
-
+        
+        public static readonly BindableProperty TitleColorProperty = BindableProperty.Create(nameof(TitleColor),
+            typeof(Color), typeof(GraceAlertView),DefaultTitleColor);
+        
+        public static readonly BindableProperty MessageColorProperty = BindableProperty.Create(nameof(MessageColor),
+            typeof(Color), typeof(GraceAlertView),DefaultMessageColor);
+        
 
         public ContentView BodyContent
         {
@@ -73,6 +79,18 @@ namespace Xam.Forms.GraceAlert
             get => (Color) this.GetValue(InfoColorProperty);
             set => this.SetValue(InfoColorProperty, value);
         }
+        
+        public Color TitleColor
+        {
+            get => (Color) this.GetValue(TitleColorProperty);
+            set => this.SetValue(TitleColorProperty, value);
+        }
+        
+        public Color MessageColor
+        {
+            get => (Color) this.GetValue(MessageColorProperty);
+            set => this.SetValue(MessageColorProperty, value);
+        }
 
         /// <summary>
         /// This property is setted by extension method GraceAlert()
@@ -98,9 +116,9 @@ namespace Xam.Forms.GraceAlert
 
         #region METHODS
         
-        public async Task Show(NotificationType type, string title, string message)
+        public async Task Show(NotificationType type, string title, string message, bool block = false)
         {
-            var request = new GraceRequest(type,title,message);
+            var request = new GraceRequest(type,title,message, block);
             this._requests.Enqueue(request);
             
             await this.InnerShow();
@@ -126,12 +144,24 @@ namespace Xam.Forms.GraceAlert
             if (!this.PageUseSafeArea && this.IsPotrait)
                 translation = 0;
 
+            this.Title.TextColor = this.TitleColor;
+            this.Message.TextColor = this.MessageColor;
+
             this.Notification.BackgroundColor = this.TypeToColor(request.Type);
             this.Title.Text = request.Title;
             this.Message.Text = request.Message;
+            
+            this._dismissTask = new TaskCompletionSource<bool>();
 
             await this.Notification.TranslateTo(this.Notification.X, translation);
-            await Task.Delay(this.DismissTime);
+            
+            // dismissmode
+            this.CloseButton.IsVisible = request.Block;
+            if(request.Block)
+                await this._dismissTask.Task;
+            else
+                await Task.Delay(this.DismissTime);
+            
             await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height + translation);
 
             this._isShowing = false;
@@ -154,5 +184,10 @@ namespace Xam.Forms.GraceAlert
         }
         
         #endregion
+
+        private void CloseButton_OnClicked(object sender, EventArgs e)
+        {
+            this._dismissTask?.SetResult(true);
+        }
     }
 }

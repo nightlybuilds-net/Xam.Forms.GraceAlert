@@ -18,14 +18,19 @@
                          Margin="0,0,0,16">
                 <Label
                     x:Name="Title"
-                    TextColor="#323232"
                     FontAttributes="Bold"
                     FontSize="Large" />
                 <Label
                     x:Name="Message"
-                    TextColor="#323232"
                     FontSize="Medium" />
             </StackLayout>
+            <Button Grid.Column="1" 
+                    x:Name="CloseButton"
+                    Clicked="CloseButton_OnClicked"
+                    Text="X"
+                    Margin="0,44,8,0"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"/>
         </Grid>
     </ContentView>
 

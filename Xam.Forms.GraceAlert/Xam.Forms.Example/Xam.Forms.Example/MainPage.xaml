@@ -3,9 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:graceAlert="clr-namespace:Xam.Forms.GraceAlert;assembly=Xam.Forms.GraceAlert"
              xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             iOsSpecific:Page.UseSafeArea="true"
+             iOsSpecific:Page.UseSafeArea="false"
              x:Class="Xam.Forms.Example.MainPage">
-    
     
     <graceAlert:GraceAlertView>
         <graceAlert:GraceAlertView.BodyContent>
@@ -17,12 +16,14 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     
-                    <!-- <ContentView BackgroundColor="Magenta"></ContentView> -->
+                    <ContentView BackgroundColor="Magenta"></ContentView>
                     
                     <StackLayout Grid.Row="1">
                         <Button Text="Error" Clicked="Error_OnClicked"/>
                         <Button Text="Warning" Clicked="Warning_OnClicked"/>
                         <Button Text="Info" Clicked="Info_OnClicked"/>
+                        <Button Text="Block Error" Clicked="Block_Error_OnClicked"/>
+
                     </StackLayout>
                 </Grid>
                 
