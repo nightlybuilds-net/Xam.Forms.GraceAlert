@@ -8,6 +8,10 @@
         VerticalOptions="Start"
         HeightRequest="125"
         TranslationY="-125">
+        <ContentView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+        </ContentView.GestureRecognizers>
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="24" />
@@ -24,13 +28,6 @@
                     x:Name="Message"
                     FontSize="Medium" />
             </StackLayout>
-            <Button Grid.Column="1" 
-                    x:Name="CloseButton"
-                    Clicked="CloseButton_OnClicked"
-                    Text="X"
-                    Margin="0,44,8,0"
-                    HorizontalOptions="End"
-                    VerticalOptions="Start"/>
         </Grid>
     </ContentView>
 

@@ -136,6 +136,8 @@ namespace Xam.Forms.GraceAlert
             // notification is showing
             this._isShowing = true;
 
+            this._dismissTask = null;
+
             var requestFound = this._requests.TryDequeue(out var request);
             if (!requestFound) return;
             
@@ -151,14 +153,15 @@ namespace Xam.Forms.GraceAlert
             this.Title.Text = request.Title;
             this.Message.Text = request.Message;
             
-            this._dismissTask = new TaskCompletionSource<bool>();
 
             await this.Notification.TranslateTo(this.Notification.X, translation);
             
             // dismissmode
-            this.CloseButton.IsVisible = request.Block;
-            if(request.Block)
+            if (request.Block)
+            {
+                this._dismissTask = new TaskCompletionSource<bool>();
                 await this._dismissTask.Task;
+            }
             else
                 await Task.Delay(this.DismissTime);
             
@@ -185,7 +188,7 @@ namespace Xam.Forms.GraceAlert
         
         #endregion
 
-        private void CloseButton_OnClicked(object sender, EventArgs e)
+        private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
         {
             this._dismissTask?.SetResult(true);
         }
