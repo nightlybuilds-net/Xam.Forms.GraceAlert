@@ -64,7 +64,7 @@ namespace Xam.Forms.GraceAlert
         /// <param name="title"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static async Task Warning(this Page page, string title, string text)
+        public static async Task Warning(this Page page, string title, string text, bool block = false)
         {
             var graceAlert = page.GraceAlert();
             if (graceAlert == null)
@@ -73,7 +73,7 @@ namespace Xam.Forms.GraceAlert
                 return;
             }
 
-            await graceAlert.Show(NotificationType.Warning, title, text);
+            await graceAlert.Show(NotificationType.Warning, title, text,block);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Xam.Forms.GraceAlert
         /// <param name="title"></param>
         /// <param name="text"></param>
         /// <returns></returns>
-        public static async Task Info(this Page page, string title, string text)
+        public static async Task Info(this Page page, string title, string text, bool block = false)
         {
             var graceAlert = page.GraceAlert();
             if (graceAlert == null)
@@ -92,7 +92,7 @@ namespace Xam.Forms.GraceAlert
                 return;
             }
 
-            await graceAlert.Show(NotificationType.Info, title, text);
+            await graceAlert.Show(NotificationType.Info, title, text,block);
         }
 
         /// <summary>
