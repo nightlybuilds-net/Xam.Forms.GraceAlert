@@ -6,10 +6,15 @@
     <ContentView
         x:Name="Notification"
         VerticalOptions="Start"
-        HeightRequest="125"
-        TranslationY="-125">
+        HeightRequest="130"
+        TranslationY="-130">
+        <ContentView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+        </ContentView.GestureRecognizers>
+        
         <Grid>
             <Grid.ColumnDefinitions>
+                <!-- I'll add an icon in future -->
                 <ColumnDefinition Width="24" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
@@ -18,12 +23,10 @@
                          Margin="0,0,0,16">
                 <Label
                     x:Name="Title"
-                    TextColor="#323232"
                     FontAttributes="Bold"
                     FontSize="Large" />
                 <Label
                     x:Name="Message"
-                    TextColor="#323232"
                     FontSize="Medium" />
             </StackLayout>
         </Grid>

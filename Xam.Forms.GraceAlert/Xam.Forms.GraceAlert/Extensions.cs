@@ -43,8 +43,9 @@ namespace Xam.Forms.GraceAlert
         /// <param name="page"></param>
         /// <param name="title"></param>
         /// <param name="text"></param>
+        /// <param name="block"></param>
         /// <returns></returns>
-        public static async Task Error(this Page page, string title, string text)
+        public static async Task Error(this Page page, string title, string text, bool block = false)
         {
             var graceAlert = page.GraceAlert();
             if (graceAlert == null)
@@ -53,7 +54,7 @@ namespace Xam.Forms.GraceAlert
                 return;
             }
 
-            await graceAlert.Show(NotificationType.Error, title, text);
+            await graceAlert.Show(NotificationType.Error, title, text, block);
         }
 
         /// <summary>

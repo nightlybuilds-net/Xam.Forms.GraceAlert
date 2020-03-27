@@ -15,7 +15,6 @@ namespace Xam.Forms.Example
 #if DEBUG
             HotReloader.Current.Run(this);
 #endif
-
             MainPage = new MainPage();
             
         }
