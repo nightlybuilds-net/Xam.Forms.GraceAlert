@@ -4,6 +4,7 @@
       x:Class="Xam.Forms.GraceAlert.GraceAlertView">
     <ContentView x:Name="Body" />
     <ContentView
+        IsVisible="False"
         x:Name="Notification"
         VerticalOptions="Start"
         HeightRequest="130"

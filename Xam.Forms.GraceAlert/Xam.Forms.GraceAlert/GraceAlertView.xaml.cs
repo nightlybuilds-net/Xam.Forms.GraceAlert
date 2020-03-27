@@ -178,6 +178,7 @@ namespace Xam.Forms.GraceAlert
             this.Title.Text = request.Title;
             this.Message.Text = request.Message;
             
+            this.Notification.IsVisible = true;
             await this.Notification.TranslateTo(this.Notification.X, translation);
             
             // dismissmode
@@ -190,6 +191,7 @@ namespace Xam.Forms.GraceAlert
                 await Task.Delay(this.DismissTime);
             
             await this.Notification.TranslateTo(this.Notification.X, -this.Notification.Height + translation);
+            this.Notification.IsVisible = false;
 
             this._isShowing = false;
             await this.InnerShow();
