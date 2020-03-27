@@ -6,14 +6,15 @@
     <ContentView
         x:Name="Notification"
         VerticalOptions="Start"
-        HeightRequest="125"
-        TranslationY="-125">
+        HeightRequest="130"
+        TranslationY="-130">
         <ContentView.GestureRecognizers>
             <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
         </ContentView.GestureRecognizers>
         
         <Grid>
             <Grid.ColumnDefinitions>
+                <!-- I'll add an icon in future -->
                 <ColumnDefinition Width="24" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>

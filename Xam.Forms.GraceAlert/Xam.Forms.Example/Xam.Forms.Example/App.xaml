@@ -7,8 +7,6 @@
         <ResourceDictionary>
             <Style TargetType="graceAlert:GraceAlertView">
                 <Setter Property="DismissTime" Value="1000"/>
-                <Setter Property="TitleColor" Value="White"/>
-                <Setter Property="MessageColor" Value="White"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

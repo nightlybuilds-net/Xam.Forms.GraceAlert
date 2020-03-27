@@ -18,9 +18,12 @@ namespace Xam.Forms.GraceAlert
         private static readonly Color DefaultWarningColor = Color.FromHex("F6CF46");
         private static readonly Color DefaultErrorColor = Color.FromHex("E5465C");
         private static readonly Color DefaultInfoColor = Color.LightGray;
+
+        private static readonly Color DarkTextColor = Color.FromHex("323232");
+        private static readonly Color LightTextColor = Color.WhiteSmoke;
         
-        private static readonly Color DefaultTitleColor = Color.FromHex("323232");
-        private static readonly Color DefaultMessageColor = Color.FromHex("323232");
+        
+        private static readonly Color DefaultInverseColor = Color.WhiteSmoke;
         
 
         public GraceAlertView()
@@ -43,12 +46,18 @@ namespace Xam.Forms.GraceAlert
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(nameof(InfoColor),
             typeof(Color), typeof(GraceAlertView),DefaultInfoColor);
         
-        public static readonly BindableProperty TitleColorProperty = BindableProperty.Create(nameof(TitleColor),
-            typeof(Color), typeof(GraceAlertView),DefaultTitleColor);
+        public static readonly BindableProperty InverseColorProperty = BindableProperty.Create(nameof(InverseColor),
+            typeof(Color), typeof(GraceAlertView),DefaultInverseColor);
         
-        public static readonly BindableProperty MessageColorProperty = BindableProperty.Create(nameof(MessageColor),
-            typeof(Color), typeof(GraceAlertView),DefaultMessageColor);
+        public static readonly BindableProperty UseLightColorForErrorProperty = BindableProperty.Create(nameof(UseLightColorForError),
+            typeof(bool), typeof(GraceAlertView),true);
         
+        public static readonly BindableProperty UseLightColorForWarningProperty = BindableProperty.Create(nameof(UseLightColorForWarning),
+            typeof(bool), typeof(GraceAlertView),false);
+        
+        public static readonly BindableProperty UseLightColorForInfoProperty = BindableProperty.Create(nameof(UseLightColorForInfo),
+            typeof(bool), typeof(GraceAlertView),false);
+
 
         public ContentView BodyContent
         {
@@ -80,18 +89,34 @@ namespace Xam.Forms.GraceAlert
             set => this.SetValue(InfoColorProperty, value);
         }
         
-        public Color TitleColor
+      
+
+        public Color InverseColor
         {
-            get => (Color) this.GetValue(TitleColorProperty);
-            set => this.SetValue(TitleColorProperty, value);
+            get => (Color) this.GetValue(InverseColorProperty);
+            set => this.SetValue(InverseColorProperty, value);
         }
         
-        public Color MessageColor
+        public bool UseLightColorForError
         {
-            get => (Color) this.GetValue(MessageColorProperty);
-            set => this.SetValue(MessageColorProperty, value);
+            get => (bool) this.GetValue(UseLightColorForErrorProperty);
+            set => this.SetValue(UseLightColorForErrorProperty, value);
         }
-
+        
+        public bool UseLightColorForWarning
+        {
+            get => (bool) this.GetValue(UseLightColorForWarningProperty);
+            set => this.SetValue(UseLightColorForWarningProperty, value);
+        }
+        
+        public bool UseLightColorForInfo
+        {
+            get => (bool) this.GetValue(UseLightColorForInfoProperty);
+            set => this.SetValue(UseLightColorForInfoProperty, value);
+        }
+        
+        
+        
         /// <summary>
         /// This property is setted by extension method GraceAlert()
         /// </summary>
@@ -146,14 +171,13 @@ namespace Xam.Forms.GraceAlert
             if (!this.PageUseSafeArea && this.IsPotrait)
                 translation = 0;
 
-            this.Title.TextColor = this.TitleColor;
-            this.Message.TextColor = this.MessageColor;
+            this.Title.TextColor = this.TypeToTextColor(request.Type);
+            this.Message.TextColor = this.TypeToTextColor(request.Type);
 
             this.Notification.BackgroundColor = this.TypeToColor(request.Type);
             this.Title.Text = request.Title;
             this.Message.Text = request.Message;
             
-
             await this.Notification.TranslateTo(this.Notification.X, translation);
             
             // dismissmode
@@ -185,7 +209,22 @@ namespace Xam.Forms.GraceAlert
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
-        
+
+        private Color TypeToTextColor(NotificationType type)
+        {
+            switch (type)
+            {
+                case NotificationType.Error:
+                    return this.UseLightColorForError ? LightTextColor : DarkTextColor;
+                case NotificationType.Warning:
+                    return this.UseLightColorForWarning ? LightTextColor : DarkTextColor;
+                case NotificationType.Info:
+                    return this.UseLightColorForInfo ? LightTextColor : DarkTextColor;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
+
         #endregion
 
         private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
