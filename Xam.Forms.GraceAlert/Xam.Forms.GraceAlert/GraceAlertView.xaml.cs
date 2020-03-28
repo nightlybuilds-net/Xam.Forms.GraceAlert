@@ -18,7 +18,8 @@ namespace Xam.Forms.GraceAlert
         private static readonly Color DefaultWarningColor = Color.FromHex("F6CF46");
         private static readonly Color DefaultErrorColor = Color.FromHex("E5465C");
         private static readonly Color DefaultInfoColor = Color.LightGray;
-
+        private static readonly Color DefaultSuccesColor = Color.FromHex("34755B");
+            
         private static readonly Color DarkTextColor = Color.FromHex("323232");
         private static readonly Color LightTextColor = Color.WhiteSmoke;
         
@@ -46,6 +47,9 @@ namespace Xam.Forms.GraceAlert
         public static readonly BindableProperty InverseColorProperty = BindableProperty.Create(nameof(InverseColor),
             typeof(Color), typeof(GraceAlertView),LightTextColor);
         
+        public static readonly BindableProperty SuccessColorProperty = BindableProperty.Create(nameof(SuccessColor),
+            typeof(Color), typeof(GraceAlertView),DefaultSuccesColor);
+        
         public static readonly BindableProperty UseLightColorForErrorProperty = BindableProperty.Create(nameof(UseLightColorForError),
             typeof(bool), typeof(GraceAlertView),true);
         
@@ -54,6 +58,9 @@ namespace Xam.Forms.GraceAlert
         
         public static readonly BindableProperty UseLightColorForInfoProperty = BindableProperty.Create(nameof(UseLightColorForInfo),
             typeof(bool), typeof(GraceAlertView),false);
+        
+        public static readonly BindableProperty UseLightColorForSuccessProperty = BindableProperty.Create(nameof(UseLightColorForSuccess),
+            typeof(bool), typeof(GraceAlertView),true);
 
 
         public ContentView BodyContent
@@ -85,6 +92,11 @@ namespace Xam.Forms.GraceAlert
             get => (Color) this.GetValue(InfoColorProperty);
             set => this.SetValue(InfoColorProperty, value);
         }
+        public Color SuccessColor
+        {
+            get => (Color) this.GetValue(SuccessColorProperty);
+            set => this.SetValue(SuccessColorProperty, value);
+        }
 
         public Color InverseColor
         {
@@ -108,6 +120,12 @@ namespace Xam.Forms.GraceAlert
         {
             get => (bool) this.GetValue(UseLightColorForInfoProperty);
             set => this.SetValue(UseLightColorForInfoProperty, value);
+        }
+        
+        public bool UseLightColorForSuccess
+        {
+            get => (bool) this.GetValue(UseLightColorForSuccessProperty);
+            set => this.SetValue(UseLightColorForSuccessProperty, value);
         }
         
         /// <summary>
@@ -200,6 +218,8 @@ namespace Xam.Forms.GraceAlert
                     return this.WarningColor;
                 case NotificationType.Info:
                     return this.InfoColor;
+                case NotificationType.Success:
+                    return this.SuccessColor;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -215,6 +235,8 @@ namespace Xam.Forms.GraceAlert
                     return this.UseLightColorForWarning ? LightTextColor : DarkTextColor;
                 case NotificationType.Info:
                     return this.UseLightColorForInfo ? LightTextColor : DarkTextColor;
+                case NotificationType.Success:
+                    return this.UseLightColorForSuccess ? LightTextColor : DarkTextColor;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
