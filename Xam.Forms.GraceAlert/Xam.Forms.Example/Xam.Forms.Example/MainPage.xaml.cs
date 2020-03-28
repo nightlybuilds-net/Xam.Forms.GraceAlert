@@ -17,22 +17,22 @@ namespace Xam.Forms.Example
         
         private async void Block_Error_OnClicked(object sender, EventArgs e)
         {
-            await this.Error("Errore","Non va bene cosi! BLOCK", true);
+            await this.Error("Error","Not very well and.. blocked", true);
         }
 
         private async void Error_OnClicked(object sender, EventArgs e)
         {
-            await this.Error("Errore","Non va bene cosi!");
+            await this.Error("Error","Not very well.");
         }
         
         private async void Warning_OnClicked(object sender, EventArgs e)
         {
-            await this.Warning("Attenzione","Aggiungi il dato che ben sai!");
+            await this.Warning("Warning","You could do better");
         }
 
         private async void Info_OnClicked(object sender, EventArgs e)
         {
-            await this.Info("Info","Info carina ma non obbligatoria");
+            await this.Info("Info","Don't say I didn't tell you");
         }
        
     }

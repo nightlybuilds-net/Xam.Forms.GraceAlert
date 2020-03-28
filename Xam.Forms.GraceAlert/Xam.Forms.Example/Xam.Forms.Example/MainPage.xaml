@@ -23,7 +23,6 @@
                         <Button Text="Warning" Clicked="Warning_OnClicked" />
                         <Button Text="Info" Clicked="Info_OnClicked" />
                         <Button Text="Block Error" Clicked="Block_Error_OnClicked" />
-
                     </StackLayout>
                 </Grid>
 
