@@ -34,6 +34,11 @@ namespace Xam.Forms.Example
         {
             await this.Info("Info","Don't say I didn't tell you");
         }
+        
+        private async void Success_OnClicked(object sender, EventArgs e)
+        {
+            await this.Success("Success","You did it!");
+        }
        
     }
 }

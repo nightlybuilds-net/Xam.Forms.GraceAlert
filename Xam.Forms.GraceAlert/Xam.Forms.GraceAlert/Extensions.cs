@@ -94,6 +94,25 @@ namespace Xam.Forms.GraceAlert
 
             await graceAlert.Show(NotificationType.Info, title, text,block);
         }
+        
+        /// <summary>
+        /// Show Info using graceview on this page
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="title"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
+        public static async Task Success(this Page page, string title, string text, bool block = false)
+        {
+            var graceAlert = page.GraceAlert();
+            if (graceAlert == null)
+            {
+                Debug.WriteLine("GraceAlert not found on page");
+                return;
+            }
+
+            await graceAlert.Show(NotificationType.Success, title, text,block);
+        }
 
         /// <summary>
         /// Adjust insets for ios 

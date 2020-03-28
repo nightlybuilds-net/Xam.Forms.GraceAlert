@@ -4,7 +4,8 @@ namespace Xam.Forms.GraceAlert
     {
         Error,
         Warning,
-        Info
+        Info,
+        Success
     }
 
 }
