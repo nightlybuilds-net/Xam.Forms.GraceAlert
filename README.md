@@ -14,7 +14,7 @@ Hi! I'm [Mark Jack Milian](http://markjackmilian.net/) and i'm here to aswer a f
 
 Platform/Feature               | Package name                              | Stable      | Status 
 -----------------------|-------------------------------------------|-----------------------------|------------------------
-Core             | `Xam.Zero.Sem` | [![Nuget](https://img.shields.io/nuget/v/Xam.Forms.GraceAlert)](https://www.nuget.org/packages/Xam.Forms.GraceAlert) | [![Build Status](https://dev.azure.com/nightlybuilds-net/Xam.GraceAlert/_apis/build/status/markjackmilian.Xam.Forms.GraceAlert?branchName=master)](https://dev.azure.com/nightlybuilds-net/Xam.GraceAlert/_build/latest?definitionId=18&branchName=master)|
+Core             | `Xam.Forms.GraceAlert` | [![Nuget](https://img.shields.io/nuget/v/Xam.Forms.GraceAlert)](https://www.nuget.org/packages/Xam.Forms.GraceAlert) | [![Build Status](https://dev.azure.com/nightlybuilds-net/Xam.GraceAlert/_apis/build/status/markjackmilian.Xam.Forms.GraceAlert?branchName=master)](https://dev.azure.com/nightlybuilds-net/Xam.GraceAlert/_build/latest?definitionId=18&branchName=master)|
 
 All packages are compliant with [Semantic Versioning](https://semver.org/)
 
