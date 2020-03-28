@@ -22,9 +22,6 @@ namespace Xam.Forms.GraceAlert
         private static readonly Color DarkTextColor = Color.FromHex("323232");
         private static readonly Color LightTextColor = Color.WhiteSmoke;
         
-        
-        private static readonly Color DefaultInverseColor = Color.WhiteSmoke;
-        
 
         public GraceAlertView()
         {
@@ -35,7 +32,7 @@ namespace Xam.Forms.GraceAlert
             typeof(ContentView), typeof(GraceAlertView), coerceValue: BodyContentCoerceValue);
 
         public static readonly BindableProperty DismissTimeProperty = BindableProperty.Create(nameof(DismissTime),
-            typeof(int), typeof(GraceAlertView),2000);
+            typeof(int), typeof(GraceAlertView),2500);
         
         public static readonly BindableProperty ErrorColorProperty = BindableProperty.Create(nameof(ErrorColor),
             typeof(Color), typeof(GraceAlertView),DefaultErrorColor);
@@ -47,7 +44,7 @@ namespace Xam.Forms.GraceAlert
             typeof(Color), typeof(GraceAlertView),DefaultInfoColor);
         
         public static readonly BindableProperty InverseColorProperty = BindableProperty.Create(nameof(InverseColor),
-            typeof(Color), typeof(GraceAlertView),DefaultInverseColor);
+            typeof(Color), typeof(GraceAlertView),LightTextColor);
         
         public static readonly BindableProperty UseLightColorForErrorProperty = BindableProperty.Create(nameof(UseLightColorForError),
             typeof(bool), typeof(GraceAlertView),true);
@@ -88,8 +85,6 @@ namespace Xam.Forms.GraceAlert
             get => (Color) this.GetValue(InfoColorProperty);
             set => this.SetValue(InfoColorProperty, value);
         }
-        
-      
 
         public Color InverseColor
         {
@@ -114,8 +109,6 @@ namespace Xam.Forms.GraceAlert
             get => (bool) this.GetValue(UseLightColorForInfoProperty);
             set => this.SetValue(UseLightColorForInfoProperty, value);
         }
-        
-        
         
         /// <summary>
         /// This property is setted by extension method GraceAlert()
