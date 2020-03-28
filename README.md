@@ -49,6 +49,19 @@ Info(this Page page, string title, string text, bool block = false):Task
 
 If block is true the notification will remain on the screen until you touch it.
 
+### Customize notification
+Many properties are customizable using implicit style.
+
+```xaml
+<Application.Resources>
+    <ResourceDictionary>
+        <Style TargetType="graceAlert:GraceAlertView">
+            <Setter Property="DismissTime" Value="1000"/>
+        </Style>
+    </ResourceDictionary>
+</Application.Resources>
+```
+
 
 ## Samples
 
