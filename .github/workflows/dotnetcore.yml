@@ -24,4 +24,4 @@ jobs:
       run: dotnet build Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj --configuration Release --no-restore
 
     - name: Pack
-      run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj -p:NuspecFile=~/Xam.Forms.GraceAlert/Nuspecs/Xam.Forms.GraceAlert.nuspec
+      run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj -p:NuspecFile=../Nuspecs/Xam.Forms.GraceAlert.nuspec
