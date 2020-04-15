@@ -17,12 +17,8 @@ jobs:
       with:
         dotnet-version: 3.1.101
         
-    - name: PWD
-      run: pwd
-    - name: PWD
-      run: ls
     - name: Install dependencies
-      run: dotnet restore Xam.Forms.GraceAlert.csproj
+      run: dotnet restore Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
     - name: Build
-      run: dotnet build Xam.Forms.GraceAlert.csproj --configuration Release --no-restore
+      run: dotnet build Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj --configuration Release --no-restore
 
