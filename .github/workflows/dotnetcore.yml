@@ -19,6 +19,8 @@ jobs:
         
     - name: PWD
       run: pwd
+    - name: PWD
+      run: ls
     - name: Install dependencies
       run: dotnet restore Xam.Forms.GraceAlert.csproj
     - name: Build
