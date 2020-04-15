@@ -3,7 +3,6 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
- 
 
 jobs:
   build:
@@ -25,3 +24,10 @@ jobs:
 
     - name: Pack
       run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj -p:NuspecFile=../Nuspecs/Xam.Forms.GraceAlert.nuspec --configuration Release --no-restore
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: xam.forms.gracealert
+        # Directory containing files to upload
+        path: Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/bin/Release/*.nupkg
