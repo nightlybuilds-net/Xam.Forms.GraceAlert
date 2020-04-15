@@ -21,13 +21,12 @@ jobs:
       run: dotnet restore Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
     - name: Build
       run: dotnet build Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj --configuration Release --no-restore
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        # Artifact name
-        name: xam.forms.gracealert
-        # Directory containing files to upload
-        path: Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/bin/Release/netstandard2.0
+
+    - name: Publish on Github
+      run: dotnet nuget push "Nuspecs/Xam.Forms.GraceAlert.nuspec" --source "github"
+
+
+   
  
     
     
