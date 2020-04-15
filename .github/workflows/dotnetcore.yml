@@ -16,6 +16,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+        
+    - name: PWD
+      run: pwd
     - name: Install dependencies
       run: dotnet restore ../../Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
     - name: Build
