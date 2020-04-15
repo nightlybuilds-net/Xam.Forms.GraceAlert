@@ -19,15 +19,13 @@ jobs:
     - name: Install dependencies
       run: dotnet restore Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
       
-    - name: Build
-      run: dotnet build Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj --configuration Release --no-restore
-
-    - name: Pack
+    - name: Build and Pack
       run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj -p:NuspecFile=../Nuspecs/Xam.Forms.GraceAlert.nuspec --configuration Release --no-restore
+      
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         # Artifact name
         name: xam.forms.gracealert
         # Directory containing files to upload
-        path: Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/bin/Release/*.nupkg
+        path: Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/bin/Release
