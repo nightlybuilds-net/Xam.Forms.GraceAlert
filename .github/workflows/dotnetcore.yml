@@ -27,10 +27,11 @@ jobs:
       with:
         # Filepath of the project to be packaged, relative to root of repository
         PROJECT_FILE_PATH: Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
-        PACKAGE_NAME: Xam.Forms.GraceAlert
+        PACKAGE_NAME: Xam.Forms.GraceAlert_del
         VERSION_STATIC: 0.0.99
         # Flag to enable / disable git tagging
         TAG_COMMIT: false
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
 
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
