@@ -20,7 +20,7 @@ jobs:
       run: dotnet restore Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
       
     - name: Build and Pack
-      run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj --configuration Release --no-restore /p:Version=${GITHUB_REF} 
+      run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj --configuration Release --no-restore /p:Version=${GITHUB_REF##*/} 
     
 
     - name: Upload artifact
