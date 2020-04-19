@@ -21,7 +21,17 @@ jobs:
       
     - name: Build and Pack
       run: dotnet pack Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj -p:NuspecFile=../Nuspecs/Xam.Forms.GraceAlert.nuspec --configuration Release --no-restore
-      
+    
+    - name: Publish NuGet
+      uses: rohith/publish-nuget@v2.3.0
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: Xam.Forms.GraceAlert/Xam.Forms.GraceAlert/Xam.Forms.GraceAlert.csproj
+        PACKAGE_NAME: Xam.Forms.GraceAlert
+        VERSION_STATIC: 0.0.99
+        # Flag to enable / disable git tagging
+        TAG_COMMIT: false
+
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
