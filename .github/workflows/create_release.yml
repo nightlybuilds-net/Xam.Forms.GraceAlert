@@ -34,4 +34,4 @@ jobs:
         release_name: ${{ steps.compute_tag.outputs.next_tag }}
         prerelease: false
       env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN:  ${{ secrets.PAT }}
