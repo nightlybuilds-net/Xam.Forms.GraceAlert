@@ -45,7 +45,6 @@ namespace Xam.Forms.GraceAlert
         {
             var graceAlert = page.GraceAlert();
             graceAlert.Hide();
-            graceAlert.Hide();
         }
 
         /// <summary>
