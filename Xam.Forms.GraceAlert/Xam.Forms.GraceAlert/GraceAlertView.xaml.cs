@@ -151,6 +151,11 @@ namespace Xam.Forms.GraceAlert
 
 
         #region METHODS
+
+        public void Hide()
+        {
+            this.Notification.IsVisible = false;
+        }
         
         public async Task Show(NotificationType type, string title, string message, bool block = false)
         {
