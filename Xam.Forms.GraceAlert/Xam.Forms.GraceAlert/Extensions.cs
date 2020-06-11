@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
@@ -35,6 +36,15 @@ namespace Xam.Forms.GraceAlert
             // add pixel for not safe area on ios
             AdjustForIos(view, page);
             return view;
+        }
+
+        /// <summary>
+        /// Hide grace alert
+        /// </summary>
+        public static void HideGrace(this Page page)
+        {
+            var graceAlert = page.GraceAlert();
+            graceAlert.Hide();
         }
 
         /// <summary>
